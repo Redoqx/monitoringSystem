@@ -1,20 +1,21 @@
 import * as React from 'react';
-import {
-    View,
-} from 'react-native';
+// import {
+//     View,
+// } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'; 
 import Login from '../screens/Login';
 
 const Stack = createNativeStackNavigator();
 function EmployeeNavigator() {
     return (
-        <Stack.Navigator>
-            <Stack.Screen>
-                name={'Login'}
-                component={Login}
-                option={{headerShown: false}}
-            </Stack.Screen>
-        </Stack.Navigator>
+        <NavigationContainer>
+            <Stack.Navigator screenOptions={{headerShown: false}}>
+                <Stack.Screen
+                    name={'Login'}
+                    component={Login}/>
+            </Stack.Navigator>
+        </NavigationContainer>
     );
 }
 
