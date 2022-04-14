@@ -12,3 +12,12 @@ const LoginInfo = [
         role: 'Karyawan',
     }
 ];
+
+const Laporan = [
+    {
+        gambar: null,
+        status: 'NaN',
+        Keterangan: 'NaN',
+        Lokasi: 'NaN',
+    }
+];
