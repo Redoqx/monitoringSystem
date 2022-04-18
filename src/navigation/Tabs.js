@@ -6,7 +6,6 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 
 import Home from "../screens/Home";
 import LaporanPage from "../screens/LaporanPage";
-import ChatPage from "../screens/ChatPage";
 import Profile from "../screens/Profile";
 
 const Tab = createBottomTabNavigator();
@@ -14,8 +13,11 @@ const Tab = createBottomTabNavigator();
 const Tabs = () => {
   return (
     <Tab.Navigator
-      tabBarOptions={{
+      screenOptions={{
         showLabel: false,
+        tabBarInactiveTintColor: "#fff",
+        tabBarActiveTintColor: "yellow",
+        headerShown: false,
         style: {
           position: "absolute",
           bottom: 25,
@@ -84,36 +86,6 @@ const Tabs = () => {
                 stye={{ color: focused ? "#e32f45" : "#748c94", fontSize: 12 }}
               >
                 Laporan
-              </Text>
-            </View>
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Comments"
-        component={ChatPage}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <View
-              style={{
-                alignitems: "center",
-                justifyContent: "center",
-                top: 10,
-              }}
-            >
-              {/* <Image
-                source={require("/monitoring/assets/icons/chat.png")}
-                resizeMode="contain"
-                style={{
-                  width: 25,
-                  height: 25,
-                  tintColor: focused ? "#e32f45" : "#748c94",
-                }}
-              /> */}
-              <Text
-                stye={{ color: focused ? "#e32f45" : "#748c94", fontSize: 12 }}
-              >
-                Chat
               </Text>
             </View>
           ),
