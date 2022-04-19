@@ -20,7 +20,7 @@ function Cam() {
             mediaType : 'photo',
             quality : 1,
             includeExtra:true,
-            saveToPhoto:true,
+            saveToPhotos:true,
         }
         launchCamera (option,(res)=>{
             if(res.didCancel){
@@ -40,7 +40,7 @@ function Cam() {
     return (
         <SafeAreaView style={{flex:1, justifyContent:'center', alignItems:'center', paddingTop:Platform.OS=='android'?StatusBar.height:0}}>
             <Image 
-                source={{uri:ImageCam===null?'../components/RPU.png':ImageCam.uri}}
+                source={{uri:ImageCam===null?'../images/home/logo.png':ImageCam.uri}}
                 style={{height: 75, width:'80%'}}/>
             <Pressable
                 style={{padding:10,margin:10,backgroundColor:"skyblue"}}

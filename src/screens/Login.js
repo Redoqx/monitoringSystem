@@ -1,68 +1,73 @@
-import * as React from 'react';
-import{
-    StyleSheet,
-    SafeAreaView,
-    View,
-    Text,
-} from 'react-native';
-import color from '../config/color';
+import React, { usestate, useEffect, useState } from "react";
+import { View, Text, Image, TextInput, TouchableOpacity } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome5";
+import TextInputs from "../components/TextInputs";
+import Forget from "../components/Forget";
+import Home from "./Home";
+import Tabs from "../navigation/Tabs";
 
-function Login(props) {
-    return (
-    <SafeAreaView style={{backgroundColor:'white',flex:1,borderColor:'#c4c4c4',borderWidth:2}}>
-            <View name="title">
-                <Text style={Styles.title}>
-                    Masuk
-                </Text>
-            </View>
-            <View name="LoginInfo" style={Styles.loginContainer}>
-                <View name="username">
+const Login = ({ navigation }) => {
+  const [email, setEmail] = useState("");
+  const [password, Setpassword] = useState("");
 
-                </View>
-                <View name="password">
+  return (
+    <View style={{ flex: 1, backgroundColor: "#dbe4f3" }}>
+      <View
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: 60,
+        }}
+      >
+        <Image
+          source={require("../images/RPU.png")}
+          style={{ width: 200, height: 200 }}
+        />
+        <Text style={{ fontSize: 28, fontWeight: "bold" }}>
+          PT RIDHO PRIMA<Text style={{ color: "#FF0000" }}> UTAMA</Text>
+        </Text>
+        <Text style={{ marginTop: 10, fontWeight: "bold", fontSize: 18 }}>
+          Masuk
+        </Text>
+      </View>
 
-                </View>
-                <View name="forgor">
+      <TextInputs
+        state={email}
+        set={setEmail}
+        icon="envelope"
+        placeholder="Masukan Email"
+        isPassword={false}
+      />
 
-                </View>
-            </View>
-            <View name="LoginButtton"style={{height:75, backgroundColor:color.ourColor, margin: 20, borderRadius: 20}}>
+      <TextInputs
+        state={password}
+        set={Setpassword}
+        icon="lock"
+        placeholder="Masukan Password"
+        isPassword={true}
+      />
 
-            </View>
-            <View name="bawah" style={{flex:1,alignItems:'flex-end',flexWrap:'wrap-reverse'}}>
-                <View name="logo">
+      <TouchableOpacity
+        style={{
+          backgroundColor: "#2396F2",
+          paddingVertical: 14,
+          marginTop: 20,
+          marginHorizontal: 25,
+          borderRadius: 50,
+          elevation: 2,
+        }}
+        onPress={() => navigation.navigate("TabNavigator")}
+      >
+        <Text
+          style={{ color: "#FFFFFF", textAlign: "center", fontWeight: "bold" }}
+        >
+          Login
+        </Text>
+      </TouchableOpacity>
 
-                </View>
-                <View name="Accessoris" style={Styles.foot}>
-
-                </View>
-            </View>
-        </SafeAreaView>    
-    );
-}
-
-const Styles = StyleSheet.create({
-    title: {
-        color: color.ourColor,
-        fontSize: 32,
-        fontWeight: 'bold',
-        alignSelf: 'center',
-        marginVertical: 100,
-    },
-    loginContainer : {
-        flex: 1,
-        backgroundColor:'gray'
-    },
-    foot:{
-        backgroundColor:color.ourColor,
-        height:100,
-        width: '100%',
-        borderTopLeftRadius: 25,
-        borderTopRightRadius: 25,
-        alignSelf:'flex-start'
-        
-    }
-
-})
+      <Forget forgotPasswordText="Lupa Password?" />
+    </View>
+  );
+};
 
 export default Login;

@@ -1,108 +1,147 @@
-import React from 'react';
+import React from "react";
 import {
-        StyleSheet,
-        Platform,
-        StatusBar,
-        SafeAreaView,
-        ScrollView,
-        View,
-        Text,
-        TextInput,
-        Button,
-        Image
-}from 'react-native';
-import color from '../config/color'
+  View,
+  Text,
+  SafeAreaView,
+  ScrollView,
+  ImageBackground,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
+import Carousel from "react-native-snap-carousel";
+import Icon from "react-native-vector-icons/FontAwesome5";
+import BannerSlider from "../components/BannerSlider";
+import { sliderData } from "../model/data";
+import { windowWidth } from "../utils/Dimensions";
 
-function Home(props) {
-    return (
-        <SafeAreaView style={styles.layar}>
-            <View style={styles.bg} />
-            <Text style={styles.title}>MASUK</Text>
-            <View name={'login'} style={styles.pencarian}>
-                <View style={styles.kolom}>
-                    <Text>Lokasi Keberangkatan</Text>
-                    <TextInput
-                        style={styles.input}
-                        placeholder= 'Masukkan Tanggal Keberangkatan'
-                    />
-                </View>
-                <View style={styles.kolom}>
-                    <Text>Lokasi Tujuan</Text>
-                    <TextInput
-                        style={styles.input}
-                        placeholder= 'Masukkan Tanggal Keberangkatan'
-                    />
-                </View>
-                <View style={styles.kolom}>
-                    <Text>Tanggal Kedatangan</Text>
-                    <TextInput
-                        style={styles.input}
-                        placeholder= 'Masukkan Tanggal Keberangkatan'
-                    />
-                </View>
-                <View style={styles.kolom}>
-                    <Button
-                        color= 'orange'
-                        title= 'Cari'
-                        style={styles.button}
-                    />
-                </View>
-            </View>
-        </SafeAreaView>
-    );
-}
+const Home = () => {
+  const renderBanner = ({ item, index }) => {
+    return <BannerSlider data={item} />;
+  };
+
+  return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
+      <ScrollView style={{ padding: 20 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            marginBottom: 20,
+          }}
+        >
+          <Text style={{ fontSize: 18, fontFamily: "Roboto-Medium" }}>
+            Hello Tatang Suparman
+          </Text>
+          <ImageBackground
+            source={require("../images/jamet.jpg")}
+            style={{ width: 35, height: 35 }}
+            imageStyle={{ borderRadius: 25 }}
+          />
+        </View>
+
+        <View
+          style={{
+            flexDirection: "row",
+            borderColor: "#C6C6C6",
+            borderWidth: 1,
+            borderRadius: 8,
+            paddingHorizontal: 10,
+            paddingVertical: 8,
+          }}
+        >
+          <Icon
+            name="search"
+            size={20}
+            color="#C6C6C6"
+            style={{ marginRight: 5 }}
+          />
+          <TextInput placeholder="Search" />
+        </View>
+
+        <View
+          style={{
+            marginVertical: 15,
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
+          <Text style={{ fontSize: 18, fontFamily: "Roboto-Medium" }}>
+            Laporan Terbaru
+          </Text>
+          <TouchableOpacity onPress={() => {}}>
+            <Text style={{ color: "#0aada8" }}>See all</Text>
+          </TouchableOpacity>
+        </View>
+
+        <Carousel
+          ref={(c) => {
+            this._carousel = c;
+          }}
+          data={sliderData}
+          renderItem={renderBanner}
+          sliderWidth={windowWidth - 40}
+          itemWidth={300}
+          loop={true}
+        />
+
+        <TouchableOpacity
+          style={{
+            flexDirection: "row",
+            borderColor: "#C6C6C6",
+            borderWidth: 1,
+            borderRadius: 8,
+            paddingHorizontal: 10,
+            paddingVertical: 8,
+            marginTop: 20,
+          }}
+        >
+          <Icon
+            name="clipboard"
+            size={20}
+            color="#C6C6C6"
+            style={{ marginRight: 5 }}
+          />
+          <Text
+            style={{
+              color: "#000",
+              textAlign: "center",
+              fontWeight: "bold",
+            }}
+          >
+            Laporan
+          </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={{
+            flexDirection: "row",
+            borderColor: "#C6C6C6",
+            borderWidth: 1,
+            borderRadius: 8,
+            paddingHorizontal: 10,
+            paddingVertical: 8,
+            marginTop: 20,
+          }}
+        >
+          <Icon
+            name="clipboard"
+            size={20}
+            color="#C6C6C6"
+            style={{ marginRight: 5 }}
+          />
+          <Text
+            style={{
+              color: "#000",
+              textAlign: "center",
+              fontWeight: "bold",
+            }}
+          >
+            Laporan
+          </Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
 
 export default Home;
-
-const styles = StyleSheet.create({
-    layar:{
-        flex: 1,
-        paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
-        backgroundColor: color.background,
-
-    },    
-    bg:{
-        height: '65%',
-        width: '100%',
-        backgroundColor: color.hijau,
-        justifyContent: 'center',
-        borderBottomEndRadius: 10,
-        borderBottomLeftRadius: 10
-    },
-    title:{
-        fontSize: 32,
-        fontWeight: 'bold',
-        color: color.item,
-        position: 'absolute',
-        alignSelf: 'center',
-        textAlign: 'center',
-        top: '10%'
-    },
-    pencarian: {
-        height:'60%',
-        width: '75%',
-        backgroundColor: color.item,
-        position: 'absolute',
-        alignSelf: 'center',
-        top: '20%',
-        borderRadius: 15,
-        alignItems: 'center',
-    },
-    kolom: {
-        flex: 1,
-        justifyContent: 'center',
-    },
-    input: {
-        height: 30,
-        width: '80%',
-        margin: 0,
-        borderWidth: 1,
-        padding: 10,
-        fontSize: 12,
-      },
-    //   button: {
-    //     width: '80%',
-    //     flex: 1,
-    //     color: 'orange',
-    //   },
-})
