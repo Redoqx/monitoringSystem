@@ -1,5 +1,12 @@
 import React, { usestate, useEffect, useState } from "react";
-import { View, Text, Image, TextInput, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TextInput,
+  TouchableOpacity,
+  SafeAreaView,
+} from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import TextInputs from "../components/TextInputs";
 import Forget from "../components/Forget";
@@ -11,7 +18,7 @@ const Login = ({ navigation }) => {
   const [password, Setpassword] = useState("");
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#dbe4f3" }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "#dbe4f3" }}>
       <View
         style={{
           justifyContent: "center",
@@ -66,7 +73,7 @@ const Login = ({ navigation }) => {
       </TouchableOpacity>
 
       <Forget forgotPasswordText="Lupa Password?" />
-    </View>
+    </SafeAreaView>
   );
 };
 

@@ -106,6 +106,9 @@ const Home = () => {
               color: "#000",
               textAlign: "center",
               fontWeight: "bold",
+              marginLeft: 20,
+              marginTop: 2,
+              marginBottom: 2,
             }}
           >
             Laporan
@@ -134,6 +137,9 @@ const Home = () => {
               color: "#000",
               textAlign: "center",
               fontWeight: "bold",
+              marginLeft: 20,
+              marginTop: 2,
+              marginBottom: 2,
             }}
           >
             Laporan

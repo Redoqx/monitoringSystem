@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 
-const Profile = () => {
+const Profile = ({ navigation }) => {
   return (
     <SafeAreaView>
       <ScrollView>
@@ -20,16 +20,7 @@ const Profile = () => {
             backgroundColor: "#000",
             height: 150,
           }}
-        >
-          <TouchableOpacity>
-            <Icon
-              name="arrow-left"
-              style={{ width: 30, height: 30, color: "#fff" }}
-            />
-            {/* <View></View>
-            <View></View> */}
-          </TouchableOpacity>
-        </View>
+        ></View>
         <View style={{ alignItems: "center" }}>
           <Image
             source={require("../images/jamet.jpg")}
@@ -60,9 +51,11 @@ const Profile = () => {
             shadowOpacity: 80,
             elevation: 15,
             marginTop: 20,
+            justifyContent: "space-between",
           }}
+          onPress={() => navigation.navigate("BantuanPage")}
         >
-          <Icon name="info" style={{ width: 20, height: 20 }} />
+          <Icon name="info" size={20} style={{ width: 20, height: 20 }} />
           <Text style={{ fontSize: 15, fontWeight: "bold", marginLeft: 10 }}>
             Bantuan
           </Text>
@@ -81,9 +74,11 @@ const Profile = () => {
             elevation: 15,
             marginTop: 20,
             marginBottom: 40,
+            justifyContent: "space-between",
           }}
+          onPress={() => navigation.navigate("PengaturanPage")}
         >
-          <Icon name="settings" style={{ width: 20, height: 20 }} />
+          <Icon name="settings" size={20} style={{ width: 20, height: 20 }} />
           <Text style={{ fontSize: 15, fontWeight: "bold", marginLeft: 10 }}>
             Pengaturan
           </Text>
