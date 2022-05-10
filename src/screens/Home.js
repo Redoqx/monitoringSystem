@@ -14,7 +14,7 @@ import BannerSlider from "../components/BannerSlider";
 import { sliderData } from "../model/data";
 import { windowWidth } from "../utils/Dimensions";
 
-const Home = () => {
+const Home = ({ navigation }) => {
   const renderBanner = ({ item, index }) => {
     return <BannerSlider data={item} />;
   };
@@ -42,7 +42,7 @@ const Home = () => {
         <View
           style={{
             flexDirection: "row",
-            borderColor: "#C6C6C6",
+            borderColor: "#582841",
             borderWidth: 1,
             borderRadius: 8,
             paddingHorizontal: 10,
@@ -52,10 +52,10 @@ const Home = () => {
           <Icon
             name="search"
             size={20}
-            color="#C6C6C6"
+            color="#582841"
             style={{ marginRight: 5 }}
           />
-          <TextInput placeholder="Search" />
+          <TextInput placeholder="Search" placeholderTextColor={"#C6C6C6"} />
         </View>
 
         <View
@@ -87,18 +87,19 @@ const Home = () => {
         <TouchableOpacity
           style={{
             flexDirection: "row",
-            borderColor: "#C6C6C6",
+            borderColor: "#582841",
             borderWidth: 1,
             borderRadius: 8,
             paddingHorizontal: 10,
             paddingVertical: 8,
             marginTop: 20,
           }}
+          onPress={() => navigation.navigate("LaporanPage")}
         >
           <Icon
             name="clipboard"
             size={20}
-            color="#C6C6C6"
+            color="#582841"
             style={{ marginRight: 5 }}
           />
           <Text
@@ -118,18 +119,19 @@ const Home = () => {
         <TouchableOpacity
           style={{
             flexDirection: "row",
-            borderColor: "#C6C6C6",
+            borderColor: "#582841",
             borderWidth: 1,
             borderRadius: 8,
             paddingHorizontal: 10,
             paddingVertical: 8,
             marginTop: 20,
           }}
+          onPress={() => navigation.navigate("UserInput")}
         >
           <Icon
-            name="clipboard"
+            name="id-badge"
             size={20}
-            color="#C6C6C6"
+            color="#582841"
             style={{ marginRight: 5 }}
           />
           <Text
@@ -142,7 +144,7 @@ const Home = () => {
               marginBottom: 2,
             }}
           >
-            Laporan
+            Tambah Data
           </Text>
         </TouchableOpacity>
       </ScrollView>

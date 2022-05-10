@@ -27,7 +27,7 @@ const Login = ({ navigation }) => {
         }}
       >
         <Image
-          source={require("../images/logo.png")}
+          source={require("../images/RPU.png")}
           style={{ width: 200, height: 200 }}
         />
         <Text style={{ fontSize: 28, fontWeight: "bold" }}>
@@ -43,6 +43,7 @@ const Login = ({ navigation }) => {
         set={setEmail}
         icon="envelope"
         placeholder="Masukan Email"
+        placeholderTextColor={"#C6C6C6"}
         isPassword={false}
       />
 
@@ -51,12 +52,13 @@ const Login = ({ navigation }) => {
         set={Setpassword}
         icon="lock"
         placeholder="Masukan Password"
+        placeholderTextColor={"#C6C6C6"}
         isPassword={true}
       />
 
       <TouchableOpacity
         style={{
-          backgroundColor: "#2396F2",
+          backgroundColor: "#582841",
           paddingVertical: 14,
           marginTop: 20,
           marginHorizontal: 25,

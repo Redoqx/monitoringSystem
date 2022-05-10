@@ -17,7 +17,7 @@ const Profile = ({ navigation }) => {
           style={{
             padding: 10,
             width: "100%",
-            backgroundColor: "#000",
+            backgroundColor: "#2D142C",
             height: 150,
           }}
         ></View>

@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
   TextInput,
+  Keyboard,
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 import Icon from "react-native-vector-icons/FontAwesome5";
@@ -15,9 +16,9 @@ const LaporanPage = () => {
   const [kondisi, setKondisi] = useState("");
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
-      <ScrollView style={{ padding: 20 }}>
+      <ScrollView style={{ padding: 20, flex: 1 }}>
         <View style={{ flexDirection: "row", marginBottom: 20 }}>
-          <Text style={{ fontSize: 18 }}>Buat Laporan</Text>
+          <Text style={{ fontSize: 18, fontWeight: "bold" }}>Buat Laporan</Text>
         </View>
 
         <View
@@ -68,7 +69,17 @@ const LaporanPage = () => {
           }}
         >
           <Text style={{ marginRight: 10 }}>Keterangan :</Text>
-          <TextInput placeholder="Masukan Keterangan" />
+          <TextInput
+            style={{
+              height: 100,
+              flex: 1,
+              marginTop: -5,
+            }}
+            placeholder="Masukan keterangan"
+            multiline={true}
+            returnKeyType="done"
+            onSubmitEditing={Keyboard.dismiss}
+          />
         </View>
 
         <TouchableOpacity
@@ -97,16 +108,15 @@ const LaporanPage = () => {
         </TouchableOpacity>
 
         <Root>
-          <View>
+          <View style={{ flex: 1 }}>
             <TouchableOpacity
               onPress={() =>
                 Popup.show({
                   type: "confirm",
-                  title: "Dikkat!",
-                  textBody:
-                    "Mutlak özgürlük, kendi başına hiçbir anlam ifade etmez. ",
-                  buttonText: "Tamam",
-                  confirmText: "Vazgeç",
+                  title: "Konfirmasi!",
+                  textBody: "Apakah Anda Yakin Ingin Mengirim Laporan ? ",
+                  buttonText: "Iya",
+                  confirmText: "Tidak",
                   callback: () => {
                     alert("Okey Callback && hidden");
                     Popup.hide();
@@ -118,11 +128,12 @@ const LaporanPage = () => {
                 })
               }
               style={{
-                backgroundColor: "#2396F2",
+                backgroundColor: "#582841",
                 paddingVertical: 14,
                 marginTop: 20,
                 marginHorizontal: 25,
                 borderRadius: 50,
+                flex: 1,
               }}
             >
               <Text
