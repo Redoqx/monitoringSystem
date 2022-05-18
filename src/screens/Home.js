@@ -74,9 +74,9 @@ const Home = () => {
         </View>
 
         <Carousel
-          ref={(c) => {
-            this._carousel = c;
-          }}
+          // ref={(c) => {
+          //   this._carousel = c;
+          // }}
           data={sliderData}
           renderItem={renderBanner}
           sliderWidth={windowWidth - 40}

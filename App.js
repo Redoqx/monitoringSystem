@@ -51,8 +51,8 @@ function Home() {
 const App = () => {
   return (
     <NavigationContainer>
-      {/* <AuthStack /> */}
-      <Cam />
+      <AuthStack />
+      {/* <Cam /> */}
     </NavigationContainer>
   );
 };

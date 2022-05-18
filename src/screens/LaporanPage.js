@@ -6,13 +6,42 @@ import {
   TouchableOpacity,
   View,
   TextInput,
+  Image,
 } from "react-native";
 import { Picker } from "@react-native-picker/picker";
+import { launchCamera } from 'react-native-image-picker'
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { Root, Popup } from "react-native-popup-confirm-toast";
+// import { color } from "react-native-reanimated";
+import color from '../config/color'
 
 const LaporanPage = () => {
+  const [lokasi, setLokasi] = useState("Masukkan Lokasi")
   const [kondisi, setKondisi] = useState("");
+  const [ImageCam, setImageCam] = React.useState(null)
+    const openCamera=()=>{
+    
+        const option = {
+            mediaType : 'photo',
+            quality : 1,
+            includeExtra:true,
+            saveToPhotos:true,
+        }
+        launchCamera (option,(res)=>{
+            if(res.didCancel){
+                console.log("Pengambilan gambar di cancel")
+            }
+            else if(res.errorCode){
+                console.log(res.errorMessage)
+            }
+            else{
+                const data = res.assets[0]
+                setImageCam(data)
+                // console.log(data)
+                // console.log(data.timestamp)
+            }
+        })
+    }
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
       <ScrollView style={{ padding: 20 }}>
@@ -31,8 +60,8 @@ const LaporanPage = () => {
             marginBottom: 20,
           }}
         >
-          <Text style={{ marginRight: 10 }}>Lokasi :</Text>
-          <TextInput placeholder="Masukan Lokasi" />
+          <Text style={{ marginRight: 10, color:'black', alignSelf:'center' }}>Lokasi :</Text>
+          <TextInput placeholder={lokasi} placeholderTextColor={'#c4c4c4'} nativeID={'Lokasi'} style={{color:"black"}}/>
         </View>
 
         <View
@@ -46,10 +75,11 @@ const LaporanPage = () => {
             marginBottom: 20,
           }}
         >
-          <Text style={{ marginBottom: 5 }}>Kondisi :</Text>
+          <Text style={{ marginBottom: 5, color:'black'}}>Kondisi :</Text>
           <Picker
             selectedValue={kondisi}
             onValueChange={(kondisiKondisi) => setKondisi(kondisiKondisi)}
+            style={{color:"black",}}
           >
             <Picker.Item label="Aman" value="Aman" />
             <Picker.Item label="Tidak Aman" value="TidakAman" />
@@ -67,8 +97,8 @@ const LaporanPage = () => {
             marginBottom: 20,
           }}
         >
-          <Text style={{ marginRight: 10 }}>Keterangan :</Text>
-          <TextInput placeholder="Masukan Keterangan" />
+          <Text style={{ marginRight: 10, color:'black' }}>Keterangan :</Text>
+          <TextInput placeholder="Masukan Keterangan" style={{color:'black'}}/>
         </View>
 
         <TouchableOpacity
@@ -84,16 +114,28 @@ const LaporanPage = () => {
             alignItems: "center",
             justifyContent: "center",
           }}
+          onPress={openCamera}
         >
-          <Icon
+          {ImageCam===null
+            ? <Icon
             name="camera"
             size={50}
             color="#C6C6C6"
             style={{ marginTop: 20 }}
-          />
-          <Text style={{ fontSize: 30, color: "#C6C6C6", marginBottom: 20 }}>
+          /> 
+            : <Image
+            source={{uri:ImageCam.uri}}
+            style={{height: 150, width: '100%'}}
+            />
+          }
+          
+          {ImageCam===null
+            ? <Text style={{ fontSize: 30, color: "#C6C6C6", marginBottom: 20 }}> Add Photo</Text>
+            : <View></View>
+            }
+          {/* <Text style={{ fontSize: 30, color: "#C6C6C6", marginBottom: 20 }}>
             Add Photo
-          </Text>
+          </Text> */}
         </TouchableOpacity>
 
         <Root>
@@ -118,7 +160,7 @@ const LaporanPage = () => {
                 })
               }
               style={{
-                backgroundColor: "#2396F2",
+                backgroundColor: color.ourColor,
                 paddingVertical: 14,
                 marginTop: 20,
                 marginHorizontal: 25,

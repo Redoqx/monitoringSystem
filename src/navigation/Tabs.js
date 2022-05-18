@@ -1,21 +1,25 @@
 import * as React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Icon from "react-native-vector-icons/FontAwesome5";
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import color from '../config/color'
 
 import Home from "../screens/Home";
 import LaporanPage from "../screens/LaporanPage";
-import ChatPage from "../screens/ChatPage";
 import Profile from "../screens/Profile";
+import CallP from "../screens/CallP";
 
 const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
   return (
     <Tab.Navigator
-      tabBarOptions={{
+      screenOptions={{
         showLabel: false,
+        tabBarInactiveTintColor: "#BBBBBB",
+        tabBarActiveTintColor: color.ourColor,
+        headerShown: false,
         style: {
           position: "absolute",
           bottom: 25,
@@ -33,29 +37,8 @@ const Tabs = () => {
         name="Home"
         component={Home}
         options={{
-          tabBarIcon: ({ focused }) => (
-            <View
-              style={{
-                alignitems: "center",
-                justifyContent: "center",
-                top: 10,
-              }}
-            >
-              {/* <Image
-                source={require("/monitoring/assets/icons/home.png")}
-                resizeMode="contain"
-                style={{
-                  width: 25,
-                  height: 25,
-                  tintColor: focused ? "#e32f45" : "#748c94",
-                }}
-              /> */} 
-              <Text
-                stye={{ color: focused ? "#e32f45" : "#748c94", fontSize: 12 }}
-              >
-                Home
-              </Text>
-            </View>
+          tabBarIcon: ({ color,size }) => (
+            <Icon name={'home'} size={20} color={color} />
           ),
         }}
       />
@@ -63,59 +46,8 @@ const Tabs = () => {
         name="Laporan"
         component={LaporanPage}
         options={{
-          tabBarIcon: ({ focused }) => (
-            <View
-              style={{
-                alignitems: "center",
-                justifyContent: "center",
-                top: 10,
-              }}
-            >
-              {/* <Image
-                source={require("/monitoring/assets/icons/clipboard.png")}
-                resizeMode="contain"
-                style={{
-                  width: 25,
-                  height: 25,
-                  tintColor: focused ? "#e32f45" : "#748c94",
-                }}
-              /> */}
-              <Text
-                stye={{ color: focused ? "#e32f45" : "#748c94", fontSize: 12 }}
-              >
-                Laporan
-              </Text>
-            </View>
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Comments"
-        component={ChatPage}
-        options={{
-          tabBarIcon: ({ focused }) => (
-            <View
-              style={{
-                alignitems: "center",
-                justifyContent: "center",
-                top: 10,
-              }}
-            >
-              {/* <Image
-                source={require("/monitoring/assets/icons/chat.png")}
-                resizeMode="contain"
-                style={{
-                  width: 25,
-                  height: 25,
-                  tintColor: focused ? "#e32f45" : "#748c94",
-                }}
-              /> */}
-              <Text
-                stye={{ color: focused ? "#e32f45" : "#748c94", fontSize: 12 }}
-              >
-                Chat
-              </Text>
-            </View>
+          tabBarIcon: ({ color,size }) => (
+            <Icon name={'file-alt'} size={20} color={color} />
           ),
         }}
       />
@@ -123,29 +55,17 @@ const Tabs = () => {
         name="user"
         component={Profile}
         options={{
-          tabBarIcon: ({ focused }) => (
-            <View
-              style={{
-                alignitems: "center",
-                justifyContent: "center",
-                top: 10,
-              }}
-            >
-              {/* <Image
-                source={require("/monitoring/assets/icons/user.png")}
-                resizeMode="contain"
-                style={{
-                  width: 25,
-                  height: 25,
-                  tintColor: focused ? "#e32f45" : "#748c94",
-                }}
-              /> */}
-              <Text
-                stye={{ color: focused ? "#e32f45" : "#748c94", fontSize: 12 }}
-              >
-                Profile
-              </Text>
-            </View>
+          tabBarIcon: ({ color,size }) => (
+            <Icon name={'user-alt'} size={20} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Call"
+        component={CallP}
+        options={{
+          tabBarIcon: ({ color,size }) => (
+            <Icon name={'phone-alt'} size={20} color={color} />
           ),
         }}
       />

@@ -16,5 +16,10 @@ public class MainActivity extends ReactActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
   super.onCreate(null);
-}
+  }
+  // @Override
+  // public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+  //   RNImmediatePhoneCallPackage.onRequestPermissionsResult(requestCode, permissions, grantResults); // very important event callback
+  //   super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+  //   }
 }
